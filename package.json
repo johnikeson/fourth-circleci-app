@@ -1,0 +1,17 @@
+{
+  "name": "second-circleci-app",
+  "version": "1.0.0",
+  "description": "This is my second attempt at circleci",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.18.1",
+    "jest": "^27.1.1",
+    "supertest": "^6.1.6"
+  }
+}
