@@ -68,6 +68,7 @@ jobs:
       - store_artifacts:
           path: ~/repo/fourth-circle-app-test
   workflows:
+    version: 2
     entire-app-flow:
       jobs:
         - lint
