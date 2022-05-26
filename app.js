@@ -5,7 +5,6 @@ const app = Express();
 app.use(Express.json());
 app.use(Express.urlencoded({extended: true}))
 
-var test = "test"
 
 app.get("/products/:id", (req, res)=> {
    
