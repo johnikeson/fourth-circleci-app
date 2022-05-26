@@ -6,9 +6,6 @@ jobs:
       - image: cimg/node:16.13.1
     steps:
       - checkout
-      - run:
-          name: update npm
-          command: "npm install -g npm"
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
@@ -25,9 +22,6 @@ jobs:
       - image: cimg/node:16.13.1
     steps:
       - checkout
-      - run:
-          name: update npm
-          command: "npm install -g npm"
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
@@ -49,9 +43,6 @@ jobs:
       - image: cimg/node:16.13.1
     steps:
       - checkout
-      - run:
-          name: update eslint
-          command: "npm install"
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
