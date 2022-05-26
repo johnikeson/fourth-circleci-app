@@ -66,14 +66,14 @@ jobs:
           command: npm run lint
       - store_artifacts:
           path: ~/repo/fourth-circle-app-test
-          
-  workflows:
-    version: 2
-    entire-app-flow:
-      jobs:
-        - lint
-        - test
-        - build:
+
+workflows:
+  version: 2
+  entire-app-flow:
+    jobs:
+      - lint
+      - test
+      - build:
           requires:
             - lint
             - test
