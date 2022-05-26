@@ -19,7 +19,61 @@ jobs:
           paths:
             - ./node_modules
       - run:
+
+  test:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/node:10.16.3
+    steps:
+      - checkout
+      - run:
+          name: update npm
+          command: "npm install -g npm@5"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
           name: run fourth circleci app test
           command: npm test
       - store_artifacts:
           path: ~/repo/fourth-circle-app-test
+
+  lint:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/node:10.16.3
+    steps:
+      - checkout
+      - run:
+          name: update eslint
+          command: "npm install"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: run fourth circleci lint
+          command: npm run lint
+      - store_artifacts:
+          path: ~/repo/fourth-circle-app-test
+  workflows:
+    entire-app-flow:
+      jobs:
+        - lint
+        - test
+        - build:
+          requires:
+            - lint
+            - test
+        
