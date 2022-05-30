@@ -27,6 +27,7 @@ jobs:
     steps:
       - checkout
       - *restore_npm_cache
+      - run: mkdir -p ./reports/junit/
       - run:
           name: run fourth circleci app test
           command: npm test --ci --runInBand --reporters=default --reporters=jest-junit
