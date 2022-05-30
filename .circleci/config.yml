@@ -1,4 +1,8 @@
 version: 2.1
+aliases:
+  - &restore_npm_cache
+    restore_cache:
+      key: dependency-cache-{{ checksum "package-lock.json" }}
 jobs:
   setup:
     working_directory: ~/repo
@@ -22,8 +26,7 @@ jobs:
       - image: cimg/node:16.13.1
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - *restore_npm_cache
       - run:
           name: run fourth circleci app test
           command: npm test
