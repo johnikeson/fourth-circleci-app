@@ -29,9 +29,11 @@ jobs:
       - *restore_npm_cache
       - run:
           name: run fourth circleci app test
-          command: npm test
-      - store_artifacts:
-          path: ~/repo/fourth-circle-app-test
+          command: npm test --ci --runInBand --reporters=default --reporters=jest-junit
+          environment: 
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
 
   lint:
     working_directory: ~/repo
