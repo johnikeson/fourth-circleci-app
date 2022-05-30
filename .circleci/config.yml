@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
- setup:
+  setup:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.13.1
@@ -52,7 +52,7 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
-          
+
 workflows:
   version: 2
   entire-app-flow:
