@@ -23,9 +23,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: 
-            - dependency-cache-{{ checksum "package-lock.json" }}
-            - dependency-cache-
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: run fourth circleci app test
           command: npm test
