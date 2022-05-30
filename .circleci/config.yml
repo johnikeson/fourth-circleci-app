@@ -44,7 +44,7 @@ jobs:
       - store_artifacts:
           path: ~/repo/fourth-circle-app-test
 
-   build:
+  build:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.13.1
