@@ -44,7 +44,7 @@ jobs:
           environment: 
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - run:
-          command: ls
+          command: ls workspace
       - run:
           command: echo "This is a new text" > /workspace/testfile.txt
       - store_test_results:
