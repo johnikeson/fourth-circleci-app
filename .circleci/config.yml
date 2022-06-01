@@ -15,6 +15,14 @@ jobs:
       - run:
           name: install dependencies
           command: npm ci
+      - run:
+          command: mkdir -p workspace
+      - run:
+          command: touch workspace/testfile.txt
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - testfile.txt
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
@@ -27,12 +35,16 @@ jobs:
     steps:
       - checkout
       - *restore_npm_cache
+      - attach_workspace:
+          at: ./workspace
       - run: mkdir -p ./reports/junit/
       - run:
           name: run fourth circleci app test
           command: npm run test -- --ci --runInBand --reporters=default --reporters=jest-junit
           environment: 
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      -run:
+          command: echo "This is a new text" > ./workspace/testfile.txt
       - store_test_results:
           path: ./reports/junit/
 
@@ -58,9 +70,13 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      - attach_workspace:
+          at: ./workspace
       - run:
           name: print in command line
           command: echo $DUMMY_API_KEY
+      - run:
+          command: cat ./workspace/testfile.txt
     
           
 
@@ -80,4 +96,5 @@ workflows:
             - lint
             - test
           context: fourthDummySecrets
+
         
