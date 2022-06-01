@@ -58,6 +58,11 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: print in command line
+          command: echo $DUMMY_API_KEY
+    context: fourthDummySecrets
+          
 
 workflows:
   version: 2

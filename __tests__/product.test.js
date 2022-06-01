@@ -13,12 +13,12 @@ describe('product', () => {
 
                 await supertest(app).get(`/products/${id}`).expect(404);
             })
-            it("should return 500", async () => {
-                expect(true).toBe(true);
-                const id = '33'
+            // it("should return 500", async () => {
+            //     expect(true).toBe(true);
+            //     const id = '33'
 
-                await supertest(app).get(`/products/${id}`).expect(500);
-            })
+            //     await supertest(app).get(`/products/${id}`).expect(500);
+            // })
         })
 
 
