@@ -76,7 +76,11 @@ jobs:
           name: print in command line
           command: echo $DUMMY_API_KEY
       - run:
+          command: echo "test content" > testfile2.txt
+      - run:
           command: cat ./workspace/testfile.txt
+      - run:
+          command: cat testfile2.txt
     
           
 
