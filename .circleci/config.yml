@@ -47,6 +47,10 @@ jobs:
           command: ls workspace
       - run:
           command: echo "This is a new text" > workspace/testfile.txt
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - testfile.txt
       - store_test_results:
           path: ./reports/junit/
 
