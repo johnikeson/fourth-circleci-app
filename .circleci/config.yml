@@ -43,7 +43,7 @@ jobs:
           command: npm run test -- --ci --runInBand --reporters=default --reporters=jest-junit
           environment: 
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
-      -run:
+      - run:
           command: echo "This is a new text" > ./workspace/testfile.txt
       - store_test_results:
           path: ./reports/junit/
