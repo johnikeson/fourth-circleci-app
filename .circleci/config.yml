@@ -44,7 +44,7 @@ jobs:
           environment: 
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - run:
-          command: echo "This is a new text" > ./workspace/testfile.txt
+          command: echo "This is a new text" > /workspace/testfile.txt
       - store_test_results:
           path: ./reports/junit/
 
@@ -78,7 +78,7 @@ jobs:
       - run:
           command: echo "test content" > testfile2.txt
       - run:
-          command: cat ./workspace/testfile.txt
+          command: cat /workspace/testfile.txt
       - run:
           command: cat testfile2.txt
     
