@@ -61,7 +61,7 @@ jobs:
       - run:
           name: print in command line
           command: echo $DUMMY_API_KEY
-    context: fourthDummySecrets
+    
           
 
 workflows:
@@ -79,4 +79,5 @@ workflows:
           requires:
             - lint
             - test
+          context: fourthDummySecrets
         
